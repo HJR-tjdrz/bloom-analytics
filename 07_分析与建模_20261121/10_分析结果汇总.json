@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-11-21T11:08:05",
+  "calc_date": "2026-11-19",
+  "results": {
+    "overview": {
+      "gmv": 8480215.78,
+      "gmv_yoy": 0.11647758945898601,
+      "orders_yoy": 0.1104262295081968,
+      "aov_yoy": 0.005449583042963058,
+      "vol_effect": 838743.4399422951,
+      "price_effect": 41392.35802999883,
+      "top_festival": "情人节",
+      "top_festival_lift": 4.410464619172914,
+      "charts": [
+        "charts/01_monthly_gmv.png",
+        "charts/02_festival_effect.png"
+      ]
+    },
+    "rfm": {
+      "customers": 28311,
+      "ari": 0.23501391307367703,
+      "high_value_cust_share": 0.15100137755642684,
+      "high_value_gmv_share": 0.317182652598708,
+      "segments": {
+        "重要价值客户": 4275,
+        "重要发展客户": 640,
+        "重要保持客户": 4951,
+        "重要挽留客户": 1458,
+        "一般价值客户": 1070,
+        "一般发展客户": 5340,
+        "一般保持客户": 1028,
+        "一般挽留客户": 9549
+      },
+      "charts": [
+        "charts/03_rfm_segments.png",
+        "charts/04_rfm_scatter.png"
+      ]
+    },
+    "product": {
+      "products": 56,
+      "a_cnt": 24,
+      "b_cnt": 15,
+      "c_cnt": 17,
+      "top1": "唯一·99朵红玫瑰",
+      "top1_share": 0.0922,
+      "quadrants": {
+        "明星": 11,
+        "瘦狗": 11,
+        "金牛": 17,
+        "问题": 17
+      },
+      "charts": [
+        "charts/05_abc_pareto.png",
+        "charts/06_bcg_matrix.png"
+      ]
+    },
+    "promo": {
+      "promo_order_share": 0.08041211848917117,
+      "promo_margin": 0.5926854035553054,
+      "base_margin": 0.6149967006474534,
+      "best_promo": "2025年9月会员日",
+      "best_roi": 11.687439665343774,
+      "charts": [
+        "charts/07_promo_roi.png",
+        "charts/08_discount_sensitivity.png"
+      ]
+    },
+    "channel": {
+      "top_channel": "线下门店",
+      "best_margin_channel": "线下门店",
+      "best_margin": 0.6176,
+      "online_share": 0.5867558006656755,
+      "commission_total": 1177285.39,
+      "charts": [
+        "charts/09_channel_efficiency.png",
+        "charts/10_store_efficiency.png"
+      ]
+    },
+    "inventory": {
+      "waste_rate": 0.04184342162837273,
+      "slowest_category": "绣球",
+      "slowest_days": 81.43083183058214,
+      "worst_waste_category": "绣球",
+      "charts": [
+        "charts/11_inventory_turnover.png"
+      ]
+    },
+    "association": {
+      "baskets": 13436,
+      "cat_rules": 10,
+      "prod_rules": 21,
+      "top_rule": "加购-花器 → 感恩祝福",
+      "top_lift": 2.55,
+      "charts": [
+        "charts/12_association_rules.png"
+      ]
+    },
+    "forecast": {
+      "mape": 10.11,
+      "rmse": 2406.0,
+      "forecast_sum": 766543.8870856195,
+      "forecast_peak": 38270.242507095376,
+      "peak_date": "2026-12-12",
+      "weekend_lift": 1.3290712716337707,
+      "festival_lift": 1.6806702539244949,
+      "charts": [
+        "charts/13_stl_decomposition.png",
+        "charts/14_forecast.png"
+      ]
+    }
+  },
+  "charts": [
+    "charts/01_monthly_gmv.png",
+    "charts/02_festival_effect.png",
+    "charts/03_rfm_segments.png",
+    "charts/04_rfm_scatter.png",
+    "charts/05_abc_pareto.png",
+    "charts/06_bcg_matrix.png",
+    "charts/07_promo_roi.png",
+    "charts/08_discount_sensitivity.png",
+    "charts/09_channel_efficiency.png",
+    "charts/10_store_efficiency.png",
+    "charts/11_inventory_turnover.png",
+    "charts/12_association_rules.png",
+    "charts/13_stl_decomposition.png",
+    "charts/14_forecast.png"
+  ]
+}

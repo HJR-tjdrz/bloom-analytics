@@ -1,0 +1,115 @@
+// ============================================================================
+//  BloomAnalytics · Power BI 度量值（20 个）
+//  用法：Power BI Desktop → 建模 → 新建度量值 → 粘贴单条 → 回车
+//  前置：表名已改为 FactSales / DimDate / ProductPerf / ChannelPerf / KpiMonthly
+// ============================================================================
+
+// ---------- 1. 基础度量 ----------
+
+GMV = SUM ( FactSales[net_amount] ) + SUM ( FactSales[freight_amount] )
+
+商品实收 = SUM ( FactSales[net_amount] )
+
+订单数 = DISTINCTCOUNT ( FactSales[order_id] )
+
+成交客户数 = DISTINCTCOUNT ( FactSales[customer_id] )
+
+销售件数 = SUM ( FactSales[quantity] )
+
+毛利额 = SUM ( FactSales[gross_profit] )
+
+
+// ---------- 2. 派生比率 ----------
+
+客单价 = DIVIDE ( [GMV], [订单数] )
+
+毛利率 = DIVIDE ( [毛利额], [GMV] )
+
+折扣率 =
+DIVIDE (
+    SUM ( FactSales[discount_amount] ),
+    SUM ( FactSales[net_amount] ) + SUM ( FactSales[discount_amount] )
+)
+
+退款率 =
+DIVIDE (
+    CALCULATE ( [订单数], FactSales[order_status] = "已退款" ),
+    [订单数]
+)
+
+新客占比 =
+DIVIDE (
+    CALCULATE ( [订单数], FactSales[customer_type] = "个人", FactSales[order_id] IN
+        CALCULATETABLE ( VALUES ( FactSales[order_id] ), FactSales[is_first_order] = 1 ) ),
+    [订单数]
+)
+
+
+// ---------- 3. 时间智能 ----------
+
+GMV 去年同期 =
+CALCULATE ( [GMV], SAMEPERIODLASTYEAR ( DimDate[full_date] ) )
+
+GMV 同比 =
+DIVIDE ( [GMV] - [GMV 去年同期], [GMV 去年同期] )
+
+GMV 环比 =
+VAR Prev =
+    CALCULATE ( [GMV], DATEADD ( DimDate[full_date], -1, MONTH ) )
+RETURN DIVIDE ( [GMV] - Prev, Prev )
+
+YTD GMV =
+TOTALYTD ( [GMV], DimDate[full_date] )
+
+
+// ---------- 4. 渠道（佣金后） ----------
+
+渠道佣金 = SUMX ( ChannelPerf, ChannelPerf[gmv] * ChannelPerf[commission_rate] )
+
+佣金后毛利 = SUM ( ChannelPerf[net_profit] )
+
+佣金后净利率 = DIVIDE ( [佣金后毛利], SUM ( ChannelPerf[gmv] ) )
+
+
+// ---------- 5. 商品帕累托（累计占比） ----------
+
+累计销售额 =
+VAR CurAmount = [GMV]
+RETURN
+    SUMX (
+        FILTER ( ALLSELECTED ( ProductPerf[product_name] ), [GMV] >= CurAmount ),
+        [GMV]
+    )
+
+累计占比 =
+DIVIDE ( [累计销售额], CALCULATE ( [GMV], ALLSELECTED ( ProductPerf ) ) )
+
+
+// ---------- 6. 用户分群 ----------
+
+核心客户 GMV 占比 =
+DIVIDE (
+    CALCULATE (
+        SUM ( CustomerSeg[gmv] ),
+        CustomerSeg[rfm_segment] IN { "重要价值客户", "重要保持客户" }
+    ),
+    SUM ( CustomerSeg[gmv] )
+)
+
+核心客户人数占比 =
+DIVIDE (
+    CALCULATE (
+        SUM ( CustomerSeg[customers] ),
+        CustomerSeg[rfm_segment] IN { "重要价值客户", "重要保持客户" }
+    ),
+    SUM ( CustomerSeg[customers] )
+)
+
+
+// ---------- 7. 动态标题（让报表更专业） ----------
+
+报表标题 =
+"花店经营分析 · " &
+FORMAT ( MIN ( DimDate[full_date] ), "yyyy-MM-dd" ) & " ~ " &
+FORMAT ( MAX ( DimDate[full_date] ), "yyyy-MM-dd" ) &
+" ｜ GMV " & FORMAT ( [GMV], "#,##0" ) & " 元"

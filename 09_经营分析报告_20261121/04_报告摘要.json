@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-11-21 11:21",
+  "files": [
+    "01_经营分析报告.md",
+    "02_经营分析报告.html",
+    "03_经营分析报告.xlsx"
+  ],
+  "headline": {
+    "gmv_total": 24541074.76,
+    "orders_total": 97933,
+    "gmv_ytd": 8480215.78,
+    "gmv_yoy": 0.11647758945898601,
+    "vol_effect": 838743.4399422951,
+    "price_effect": 41392.35802999883,
+    "top_festival": "情人节",
+    "top_festival_lift": 4.410464619172914,
+    "core_cust_share": 0.3258803998445834,
+    "core_gmv_share": 0.6828970892226727,
+    "ari": 0.23501391307367703,
+    "a_cnt": 24,
+    "products": 56,
+    "quadrants": {
+      "明星": 11,
+      "瘦狗": 11,
+      "金牛": 17,
+      "问题": 17
+    },
+    "online_share": 0.5867558006656755,
+    "commission_total": 1177285.39,
+    "best_channel": "线下门店",
+    "best_margin": 0.6176,
+    "waste_rate": 0.04184342162837273,
+    "slowest_category": "绣球",
+    "slowest_days": 81.43083183058214,
+    "mape": 10.11,
+    "fc_sum": 766543.8870856195,
+    "fc_peak": 38270.242507095376,
+    "top_rule": "加购-花器 → 感恩祝福",
+    "top_lift": 2.55
+  }
+}
