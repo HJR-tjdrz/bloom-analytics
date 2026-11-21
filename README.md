@@ -405,11 +405,11 @@ ORDER BY 日均GMV DESC;
 ```bibtex
 @software{bloomanalytics2026,
   title   = {BloomAnalytics: 花店全渠道经营数据分析平台},
-  author  = {YOUR_NAME},
+  author  = {Jirui Huang},
   year    = {2026},
   version = {1.0.0},
   license = {MIT},
-  url     = {https://github.com/YOUR_GITHUB_USERNAME/bloom-analytics}
+  url     = {https://github.com/HJR-tjdrz/bloom-analytics}
 }
 ```
 
