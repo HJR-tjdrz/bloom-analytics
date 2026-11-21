@@ -1,0 +1,78 @@
+{
+  "orders": {
+    "oltp_rows": 101818,
+    "dwd_rows": 100904,
+    "matched": 100904,
+    "only_in_oltp": 914,
+    "only_in_dwd": 0,
+    "rejected_rows": 914
+  },
+  "items": {
+    "oltp_rows": 116292,
+    "dwd_rows": 114425,
+    "oltp_amount": 25468857.0,
+    "dwd_amount": 25058520.5,
+    "rejected_rows": 1867
+  },
+  "amount": {
+    "oltp_total": 25533555.99,
+    "dwd_total": 25306411.15,
+    "diff": 227144.84,
+    "rejected_amount": 227144.84,
+    "explained_diff": 0.0
+  },
+  "field_consistency": {
+    "下单时间": {
+      "checked": 100904,
+      "consistent": 100904,
+      "mismatch": 0
+    },
+    "订单状态": {
+      "checked": 100904,
+      "consistent": 100904,
+      "mismatch": 0
+    },
+    "实付金额": {
+      "checked": 100904,
+      "consistent": 100904,
+      "mismatch": 0
+    },
+    "送达时间": {
+      "checked": 100904,
+      "consistent": 97879,
+      "mismatch": 3025
+    },
+    "客户编号": {
+      "checked": 100904,
+      "consistent": 98885,
+      "mismatch": 2019
+    }
+  },
+  "rejects_by_reason": [
+    {
+      "source_table": "ods_orders_raw",
+      "reason_code": "E03",
+      "cnt": 305
+    },
+    {
+      "source_table": "ods_orders_raw",
+      "reason_code": "E04",
+      "cnt": 609
+    },
+    {
+      "source_table": "ods_order_items_raw",
+      "reason_code": "E15",
+      "cnt": 345
+    },
+    {
+      "source_table": "ods_order_items_raw",
+      "reason_code": "E14",
+      "cnt": 465
+    },
+    {
+      "source_table": "ods_order_items_raw",
+      "reason_code": "E18",
+      "cnt": 1057
+    }
+  ]
+}

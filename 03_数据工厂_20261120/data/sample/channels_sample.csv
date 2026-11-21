@@ -1,0 +1,7 @@
+﻿channel_id,channel_name,channel_type,commission_rate,is_active
+CH01,线下门店,线下,0.0,1
+CH02,微信小程序,线上,0.006,1
+CH03,美团外卖,线上,0.18,1
+CH04,抖音直播,线上,0.12,1
+CH05,淘宝旗舰店,线上,0.05,1
+CH06,企业团购,线下,0.0,1

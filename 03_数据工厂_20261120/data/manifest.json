@@ -1,0 +1,447 @@
+{
+  "generated_at": "2026-11-20T13:41:25",
+  "params": {
+    "seed": 20241118,
+    "data_start": "2024-01-01",
+    "data_end": "2026-11-18",
+    "base_daily_orders": 66,
+    "repeat_order_ratio": 0.72,
+    "n_personal_customers": 41200,
+    "n_enterprise_customers": 800
+  },
+  "clean_tables": {
+    "suppliers": {
+      "rows": 6,
+      "columns": [
+        "supplier_id",
+        "supplier_name",
+        "province",
+        "lead_time_days",
+        "rating",
+        "cooperation_start"
+      ]
+    },
+    "channels": {
+      "rows": 6,
+      "columns": [
+        "channel_id",
+        "channel_name",
+        "channel_type",
+        "commission_rate",
+        "is_active"
+      ]
+    },
+    "stores": {
+      "rows": 8,
+      "columns": [
+        "store_id",
+        "store_name",
+        "city",
+        "province",
+        "open_date",
+        "area_sqm",
+        "staff_count",
+        "status"
+      ]
+    },
+    "employees": {
+      "rows": 40,
+      "columns": [
+        "employee_id",
+        "employee_name",
+        "store_id",
+        "role_name",
+        "hire_date",
+        "is_active"
+      ]
+    },
+    "flower_skus": {
+      "rows": 41,
+      "columns": [
+        "sku_id",
+        "sku_name",
+        "category",
+        "color",
+        "unit",
+        "spec",
+        "cost_price",
+        "list_price",
+        "shelf_life_days",
+        "origin_place",
+        "supplier_id",
+        "status"
+      ]
+    },
+    "bundles": {
+      "rows": 38,
+      "columns": [
+        "bundle_id",
+        "bundle_name",
+        "category",
+        "scene",
+        "description",
+        "list_price",
+        "cost_price",
+        "launch_date",
+        "status"
+      ]
+    },
+    "bundle_items": {
+      "rows": 106,
+      "columns": [
+        "bundle_id",
+        "sku_id",
+        "quantity"
+      ]
+    },
+    "customers": {
+      "rows": 28705,
+      "columns": [
+        "customer_id",
+        "customer_name",
+        "customer_type",
+        "gender",
+        "phone",
+        "city",
+        "province",
+        "birthday",
+        "register_date",
+        "member_level",
+        "source_channel",
+        "is_active"
+      ]
+    },
+    "promotions": {
+      "rows": 78,
+      "columns": [
+        "promotion_id",
+        "promotion_name",
+        "promotion_type",
+        "festival",
+        "start_date",
+        "end_date",
+        "discount_rate",
+        "threshold_amount",
+        "reduce_amount",
+        "budget_amount",
+        "status"
+      ]
+    },
+    "coupons": {
+      "rows": 12,
+      "columns": [
+        "coupon_id",
+        "coupon_name",
+        "coupon_type",
+        "face_value",
+        "threshold_amount",
+        "valid_from",
+        "valid_to",
+        "status"
+      ]
+    },
+    "orders": {
+      "rows": 101818,
+      "columns": [
+        "order_id",
+        "customer_id",
+        "store_id",
+        "channel_id",
+        "order_time",
+        "pay_time",
+        "status",
+        "delivery_type",
+        "expected_delivery_time",
+        "delivery_time",
+        "total_amount",
+        "discount_amount",
+        "freight_amount",
+        "payable_amount",
+        "cost_amount",
+        "promotion_id",
+        "coupon_id",
+        "is_first_order",
+        "remark"
+      ]
+    },
+    "order_items": {
+      "rows": 116292,
+      "columns": [
+        "item_id",
+        "order_id",
+        "product_type",
+        "sku_id",
+        "bundle_id",
+        "quantity",
+        "unit_price",
+        "discount_amount",
+        "freight_amount",
+        "line_amount",
+        "cost_amount"
+      ]
+    },
+    "order_promotions": {
+      "rows": 8179,
+      "columns": [
+        "order_id",
+        "promotion_id",
+        "discount_amount"
+      ]
+    },
+    "refunds": {
+      "rows": 3862,
+      "columns": [
+        "refund_id",
+        "order_id",
+        "refund_time",
+        "refund_amount",
+        "refund_reason",
+        "refund_type",
+        "status"
+      ]
+    },
+    "order_status_log": {
+      "rows": 69052,
+      "columns": [
+        "log_id",
+        "order_id",
+        "from_status",
+        "to_status",
+        "changed_at",
+        "operator_id"
+      ]
+    },
+    "inventory_daily": {
+      "rows": 43173,
+      "columns": [
+        "stat_date",
+        "sku_id",
+        "in_qty",
+        "out_qty",
+        "waste_qty",
+        "on_hand_qty",
+        "purchase_amount",
+        "waste_amount"
+      ]
+    },
+    "dim_date": {
+      "rows": 1053,
+      "columns": [
+        "date_key",
+        "full_date",
+        "year",
+        "quarter",
+        "month",
+        "month_name",
+        "week_of_year",
+        "day_of_week",
+        "day_name",
+        "is_weekend",
+        "is_holiday",
+        "holiday_name",
+        "is_festival",
+        "festival_name",
+        "season",
+        "month_key",
+        "demand_index"
+      ]
+    }
+  },
+  "raw_tables": {
+    "orders_raw": {
+      "rows": 103039,
+      "columns": [
+        "order_id",
+        "customer_id",
+        "store_id",
+        "channel_id",
+        "order_time",
+        "pay_time",
+        "status",
+        "delivery_type",
+        "expected_delivery_time",
+        "delivery_time",
+        "total_amount",
+        "discount_amount",
+        "freight_amount",
+        "payable_amount",
+        "cost_amount",
+        "promotion_id",
+        "coupon_id",
+        "is_first_order",
+        "remark"
+      ]
+    },
+    "customers_raw": {
+      "rows": 28934,
+      "columns": [
+        "customer_id",
+        "customer_name",
+        "customer_type",
+        "gender",
+        "phone",
+        "city",
+        "province",
+        "birthday",
+        "register_date",
+        "member_level",
+        "source_channel",
+        "is_active"
+      ]
+    },
+    "products_raw": {
+      "rows": 41,
+      "columns": [
+        "sku_id",
+        "sku_name",
+        "category",
+        "color",
+        "unit",
+        "spec",
+        "cost_price",
+        "list_price",
+        "shelf_life_days",
+        "origin_place",
+        "supplier_id",
+        "status"
+      ]
+    },
+    "order_items_raw": {
+      "rows": 117454,
+      "columns": [
+        "item_id",
+        "order_id",
+        "product_type",
+        "sku_id",
+        "bundle_id",
+        "quantity",
+        "unit_price",
+        "discount_amount",
+        "freight_amount",
+        "line_amount",
+        "cost_amount"
+      ]
+    }
+  },
+  "dq_injection": [
+    {
+      "rule": "DQ03",
+      "table": "orders_raw",
+      "field": "order_time",
+      "affected": 1018,
+      "desc": "下单时间格式不规范（Excel 自动转换、手工录入）"
+    },
+    {
+      "rule": "DQ08",
+      "table": "orders_raw",
+      "field": "order_time",
+      "affected": 305,
+      "desc": "业务时间越界（1999 年或未来日期）"
+    },
+    {
+      "rule": "DQ02",
+      "table": "orders_raw",
+      "field": "customer_id",
+      "affected": 2036,
+      "desc": "客户ID缺失（游客下单/系统未落号）"
+    },
+    {
+      "rule": "DQ04",
+      "table": "orders_raw",
+      "field": "payable_amount",
+      "affected": 610,
+      "desc": "订单金额异常（负数、0 元、极端离群值）"
+    },
+    {
+      "rule": "DQ05",
+      "table": "orders_raw",
+      "field": "status",
+      "affected": 814,
+      "desc": "订单状态值不规范（空格、大小写、中英混写）"
+    },
+    {
+      "rule": "DQ09",
+      "table": "orders_raw",
+      "field": "delivery_time",
+      "affected": 3054,
+      "desc": "已完成订单缺少配送时间（状态回填缺失）"
+    },
+    {
+      "rule": "DQ10",
+      "table": "orders_raw",
+      "field": "remark",
+      "affected": 509,
+      "desc": "备注含乱码/emoji（跨系统编码问题）"
+    },
+    {
+      "rule": "DQ01",
+      "table": "orders_raw",
+      "field": "order_id",
+      "affected": 1221,
+      "desc": "订单号重复（重复导出/重复提交）"
+    },
+    {
+      "rule": "DQ06",
+      "table": "customers_raw",
+      "field": "city",
+      "affected": 430,
+      "desc": "城市名含空白符/全角字符（手工录入）"
+    },
+    {
+      "rule": "DQ07",
+      "table": "customers_raw",
+      "field": "phone",
+      "affected": 143,
+      "desc": "手机号格式非法（位数不对、含字母）"
+    },
+    {
+      "rule": "DQ13",
+      "table": "customers_raw",
+      "field": "member_level",
+      "affected": 287,
+      "desc": "会员等级脏值（大小写/空格/别名）"
+    },
+    {
+      "rule": "DQ12",
+      "table": "customers_raw",
+      "field": "phone",
+      "affected": 229,
+      "desc": "客户重复（同一手机号多条记录）"
+    },
+    {
+      "rule": "DQ11",
+      "table": "products_raw",
+      "field": "list_price",
+      "affected": 2,
+      "desc": "商品价格异常（0 元或极端高价）"
+    },
+    {
+      "rule": "DQ15",
+      "table": "order_items_raw",
+      "field": "quantity",
+      "affected": 465,
+      "desc": "数量为非正数（退货冲销未拆单）"
+    },
+    {
+      "rule": "DQ16",
+      "table": "order_items_raw",
+      "field": "order_id",
+      "affected": 348,
+      "desc": "明细订单号缺失（孤立明细，无法归属订单）"
+    },
+    {
+      "rule": "DQ17",
+      "table": "order_items_raw",
+      "field": "unit_price",
+      "affected": 581,
+      "desc": "明细单价为 0（赠品未打标/价格缺失）"
+    },
+    {
+      "rule": "DQ14",
+      "table": "order_items_raw",
+      "field": "item_id",
+      "affected": 1162,
+      "desc": "订单明细重复（重复导出）"
+    }
+  ]
+}
