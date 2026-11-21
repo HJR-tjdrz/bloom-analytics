@@ -1,0 +1,33 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# ---------- 环境与密钥 ----------
+.env
+.env.local
+
+# ---------- 运行产物 ----------
+logs/
+*.log
+
+# ---------- 数据产物（体积大，由生成器复现） ----------
+03_数据工厂_20261120/data/clean/*.csv
+03_数据工厂_20261120/data/raw_export/*.csv
+03_数据工厂_20261120/data/interim/*.csv
+03_数据工厂_20261120/data/*.json
+!03_数据工厂_20261120/data/sample/
+
+# ---------- 编辑器与系统 ----------
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+desktop.ini
+~$*
+
+# ---------- 本地临时目录 ----------
+.pipptmp/
