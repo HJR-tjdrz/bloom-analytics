@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BloomAnalytics · 花店经营分析看板</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ================= 侧边栏 ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">🌸</div>
+      <div class="brand-text">
+        <h1>BloomAnalytics</h1>
+        <p>花店全渠道经营分析</p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item is-active" data-page="overview"><i>📊</i><span>经营总览</span></button>
+      <button class="nav-item" data-page="rfm"><i>👥</i><span>用户价值</span></button>
+      <button class="nav-item" data-page="product"><i>🌹</i><span>商品结构</span></button>
+      <button class="nav-item" data-page="promo"><i>🏷️</i><span>促销与渠道</span></button>
+      <button class="nav-item" data-page="inventory"><i>📦</i><span>库存损耗</span></button>
+      <button class="nav-item" data-page="forecast"><i>🔮</i><span>销售预测</span></button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="dot-row"><span class="dot"></span>数据已就绪</div>
+      <p>数据区间 2024-01-01 ~ 2026-11-18</p>
+      <p>11.6 万行明细 · 质量分 99.61</p>
+    </div>
+  </aside>
+
+  <!-- ================= 主区域 ================= -->
+  <main class="main">
+    <header class="topbar">
+      <div class="titles">
+        <h2 id="page-title">经营总览</h2>
+        <p id="page-sub">全渠道 GMV、订单与毛利表现</p>
+      </div>
+
+      <div class="filters" id="filter-bar">
+        <label class="field">
+          <span>起始</span>
+          <input type="date" id="f-start">
+        </label>
+        <label class="field">
+          <span>结束</span>
+          <input type="date" id="f-end">
+        </label>
+        <label class="field">
+          <span>渠道</span>
+          <select id="f-channel"><option value="">全部渠道</option></select>
+        </label>
+        <label class="field">
+          <span>门店</span>
+          <select id="f-store"><option value="">全部门店</option></select>
+        </label>
+        <button class="btn btn-primary" id="btn-apply">应用筛选</button>
+        <button class="btn" id="btn-reset">重置</button>
+      </div>
+
+      <div class="scope-badge" id="scope-badge" hidden>全量口径</div>
+    </header>
+
+    <div class="pages">
+
+      <!-- ---------- 1. 经营总览 ---------- -->
+      <section class="page is-active" id="page-overview">
+        <div class="kpi-grid" id="kpi-grid"></div>
+
+        <div class="grid">
+          <div class="card span-2">
+            <div class="card-head"><h3>月度 GMV 与同比</h3><span class="hint">2026 年 vs 2025 年</span></div>
+            <div class="chart chart-lg" id="chart-monthly"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>渠道结构</h3><span class="hint">GMV 占比</span></div>
+            <div class="chart chart-lg" id="chart-channel"></div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card span-2">
+            <div class="card-head"><h3>节日效应</h3><span class="hint">节日期间日均 GMV</span></div>
+            <div class="chart" id="chart-festival"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>门店 GMV</h3><span class="hint">按营收排序</span></div>
+            <div class="chart" id="chart-store"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 2. 用户价值 ---------- -->
+      <section class="page" id="page-rfm">
+        <div class="kpi-grid kpi-grid-4" id="rfm-kpi"></div>
+        <div class="grid">
+          <div class="card">
+            <div class="card-head"><h3>八分群：人数 vs 消费额</h3><span class="hint">RFM 分群</span></div>
+            <div class="chart chart-lg" id="chart-rfm-seg"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>客户分布</h3><span class="hint">点大小 = 累计消费</span></div>
+            <div class="chart chart-lg" id="chart-rfm-scatter"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>分群明细</h3><span class="hint">可用于圈选投放</span></div>
+          <div class="table-wrap"><table id="table-rfm"></table></div>
+        </div>
+      </section>
+
+      <!-- ---------- 3. 商品结构 ---------- -->
+      <section class="page" id="page-product">
+        <div class="kpi-grid kpi-grid-3" id="abc-kpi"></div>
+        <div class="grid">
+          <div class="card">
+            <div class="card-head"><h3>ABC 帕累托</h3><span class="hint">销售额累计 80/95 分界</span></div>
+            <div class="chart chart-lg" id="chart-pareto"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>波士顿矩阵</h3><span class="hint">份额 × 增长</span></div>
+            <div class="chart chart-lg" id="chart-bcg"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>TOP20 商品</h3><span class="hint">按销售额排序</span></div>
+          <div class="table-wrap"><table id="table-product"></table></div>
+        </div>
+      </section>
+
+      <!-- ---------- 4. 促销与渠道 ---------- -->
+      <section class="page" id="page-promo">
+        <div class="grid">
+          <div class="card span-2">
+            <div class="card-head"><h3>活动让利效率</h3><span class="hint">GMV TOP15 活动</span></div>
+            <div class="chart" id="chart-promo"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>折扣敏感度</h3><span class="hint">订单占比 vs 毛利率</span></div>
+            <div class="chart" id="chart-discount"></div>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <div class="card-head"><h3>渠道效率</h3><span class="hint">客单价 × 佣金后净利率</span></div>
+            <div class="chart" id="chart-channel-scatter"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>渠道明细</h3><span class="hint">含平台佣金</span></div>
+            <div class="table-wrap"><table id="table-channel"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 5. 库存损耗 ---------- -->
+      <section class="page" id="page-inventory">
+        <div class="grid">
+          <div class="card span-2">
+            <div class="card-head"><h3>品类周转与损耗</h3><span class="hint">柱=周转天数，线=损耗率</span></div>
+            <div class="chart chart-lg" id="chart-inventory"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>滞销商品 TOP10</h3><span class="hint">C 类、销量垫底</span></div>
+            <div class="table-wrap"><table id="table-slow"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- 6. 销售预测 ---------- -->
+      <section class="page" id="page-forecast">
+        <div class="kpi-grid kpi-grid-3" id="fc-kpi"></div>
+        <div class="card">
+          <div class="card-head"><h3>未来 30 天 GMV 预测</h3><span class="hint">SARIMAX · 80% 置信区间</span></div>
+          <div class="chart chart-xl" id="chart-forecast"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>预测明细</h3><span class="hint">可用于排班与备货</span></div>
+          <div class="table-wrap"><table id="table-forecast"></table></div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="foot">
+      BloomAnalytics · 数据源 MySQL 8.0（11.6 万行事实表）· 前端 ECharts 5.5（离线）
+    </footer>
+  </main>
+</div>
+
+<div class="loading" id="loading"><div class="spinner"></div><span>加载中…</span></div>
+
+<script src="vendor/echarts.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

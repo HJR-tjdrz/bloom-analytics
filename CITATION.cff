@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "如果本项目对你的研究或工作有帮助，请按以下格式引用。"
+title: "BloomAnalytics: 花店全渠道经营数据分析平台"
+abstract: >-
+  面向花店零售场景的端到端数据分析项目：MySQL 分层数仓（ODS/DIM/DWD/DWS/ADS）、
+  18 条质量规则的数据治理与清洗对账、8 个分析建模模块（RFM、ABC、波士顿矩阵、
+  促销效率、渠道净利、库存周转、Apriori、SARIMAX）、Flask + ECharts 交互看板
+  与自动生成的经营分析报告。数据为可复现的模拟数据（11.6 万行订单明细）。
+type: software
+version: 1.0.0
+date-released: "2026-11-21"
+license: MIT
+repository-code: "https://github.com/YOUR_GITHUB_USERNAME/bloom-analytics"
+url: "https://github.com/YOUR_GITHUB_USERNAME/bloom-analytics"
+keywords:
+  - data analysis
+  - data warehouse
+  - MySQL
+  - pandas
+  - RFM
+  - BCG matrix
+  - Apriori
+  - SARIMAX
+  - ECharts
+  - data governance
+authors:
+  - family-names: "YOUR_FAMILY_NAME"
+    given-names: "YOUR_GIVEN_NAME"
+    affiliation: "YOUR_SCHOOL_OR_ORG"
+    orcid: "https://orcid.org/YOUR_ORCID"
