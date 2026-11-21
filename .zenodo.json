@@ -1,0 +1,29 @@
+{
+  "title": "BloomAnalytics: 花店全渠道经营数据分析平台",
+  "description": "<p>一个面向花店零售场景的端到端数据分析项目：MySQL 双库分层数仓（ODS/DIM/DWD/DWS/ADS + 星型模型 + SCD2）→ 18 条质量规则的数据治理与清洗对账 → 8 个分析建模模块（RFM 八分群与 K-Means 校验、ABC 帕累托、波士顿矩阵、促销让利效率、渠道佣金后净利、库存周转/货架期、自实现 Apriori、SARIMAX 预测）→ Flask + ECharts 交互看板 → 自动生成的经营分析报告。</p><p>数据为程序生成的模拟数据（3 年、11.6 万行订单明细），固定随机种子，可通过 <code>python run.py gen</code> 完全复现。项目包含 73 个单元测试、48 个指标定义、18 个标签、527 字段数据字典。</p>",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "language": "zho",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Jirui Huang",
+      "affiliation": "Guilin University of Electronic Technology",
+      "orcid": ""
+    }
+  ],
+  "keywords": [
+    "data analysis", "data warehouse", "MySQL", "pandas", "RFM",
+    "BCG matrix", "Apriori", "SARIMAX", "ECharts", "data governance",
+    "flower shop", "business intelligence"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/HJR-tjdrz/bloom-analytics",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "模拟数据，不含任何真实客户信息；全部指标与结论可通过 python run.py 链路复现。"
+}
