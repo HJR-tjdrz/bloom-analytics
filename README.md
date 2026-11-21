@@ -10,6 +10,7 @@
 ![mysql](https://img.shields.io/badge/MySQL-8.0-orange)
 ![pandas](https://img.shields.io/badge/pandas-2.x-150458)
 ![license](https://img.shields.io/badge/license-MIT-lightgrey)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24421250.svg)](https://doi.org/10.5281/zenodo.24421250)
 
 ---
 
